@@ -1,50 +1,46 @@
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+import { goto } from "$app/navigation";
+
 </script>
 
-<main>
-	<h1>Hello world!</h1>
-
-	<Counter />
-
-	<p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
+<main class="min-w-full h-screen">
+	<body class = "container min-w-full">
+		<header class = "flex justify-between pl-8 pr-1 pt-4">
+			<div class = "ld-8 text-3xl">Teilen</div>
+			<div class ="text-xl">
+				<a class ="mr-4">Why Teilen</a>
+				<a href="pricing" class ="mr-4">Pricing</a>
+				<a class ="mr-4">About</a>
+				<button on:click={()=>{goto("login")}} class = "mr-4 border border-indigo-500 p-2 pl-4 pr-4 rounded">LogIn</button>
+				<button on:click={()=>{goto("signin")}} class = "text-white bg-indigo-500 mr-4 border  p-2 pl-4 pr-4 rounded">SignIn</button>
+			</div>
+		</header>
+		<div class = "flex">
+			<div class="container h-screen w-full">
+				<div class=" pt-10 px- p-20">
+					<h1 class="text-6xl font-bold text-gray-800">
+						Make learning fun
+					</h1>
+					<h2 class="pt-5 font-normal text-lg tracking-normal text-gray-700">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit
+					
+					</h2>
+				</div>
+				
+			</div>
+			<div class="container h-screen hidden md:block">
+				<div>
+				  <img class="w-full" href="https://storyset.com/education" src="../../static/images/svg/Telecommuting-cuate.svg" alt="Kiwi standing on oval">
+				  <a href="https://storyset.com/work">Illustration by Freepik Storyset</a>
+				</div>
+			</div>
+		</div>
+		
+		
+	</body>
+	
 </main>
 
-<style lang="less">
-	:root {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-			'Open Sans', 'Helvetica Neue', sans-serif;
-	}
+<style>
 
-	main {
-		text-align: center;
-		padding: 1em;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4rem;
-		font-weight: 100;
-		line-height: 1.1;
-		margin: 4rem auto;
-		max-width: 14rem;
-	}
-
-	p {
-		max-width: 14rem;
-		margin: 2rem auto;
-		line-height: 1.35;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			max-width: none;
-		}
-
-		p {
-			max-width: none;
-		}
-	}
 </style>
