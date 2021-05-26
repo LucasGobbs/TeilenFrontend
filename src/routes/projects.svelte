@@ -94,7 +94,8 @@
     let project_status = "desligado"
     
     
-    import Chart from "chart.js/auto/auto.js";
+    import pkg from "chart.js/auto/auto.js";
+    const {Chart} = pkg
     import { onMount } from 'svelte';
     onMount(async()=>{
         renderChart()

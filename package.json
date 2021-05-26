@@ -2,12 +2,13 @@
   "name": "website-sveltekit",
   "version": "0.0.1",
   "scripts": {
+    "clean": "rm -rf node_modules",
+    "reinstall": "npm run clean && npm install",
     "dev": "set NODE_ENV=development && svelte-kit dev",
     "build": "set NODE_ENV=production && svelte-kit build",
     "start": "svelte-kit start"
   },
   "devDependencies": {
-    "@sveltejs/adapter-netlify": "^1.0.0-next.14",
     "@sveltejs/adapter-node": "next",
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
@@ -43,6 +44,7 @@
     "dotenv": "^9.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.7",
+    "mongodb-client-encryption": "^1.2.3",
     "svelte-chartjs": "^1.0.1",
     "svelte-icons": "^2.1.0",
     "ws": "^7.4.5"

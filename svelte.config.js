@@ -1,12 +1,9 @@
-const sveltePreprocess = require('svelte-preprocess');
-const node = require('@sveltejs/adapter-node');
-const pkg = require('./package.json');
+import sveltePreprocess from 'svelte-preprocess';
+import node from '@sveltejs/adapter-vercel';
+import fs from 'fs'
+const pkg = JSON.parse(fs.readFileSync(new URL('package.json', import.meta.url), 'utf8'));
 /** @type {import('@sveltejs/kit').Config} */
-
-
-
-
-module.exports = {
+const config =  {
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
   preprocess: sveltePreprocess({
@@ -33,3 +30,5 @@ module.exports = {
 
   },
 };
+
+export default config
