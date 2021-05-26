@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
-import { MongoClient } from 'mongodb'
+import pkg from 'mongodb'
+const { MongoClient } = pkg
 
 const { MONGODB_URI, MONGODB_DB } = process.env
 

@@ -1,7 +1,11 @@
 const sveltePreprocess = require('svelte-preprocess');
-const node = require('@sveltejs/adapter-vercel');
+const node = require('@sveltejs/adapter-node');
 const pkg = require('./package.json');
 /** @type {import('@sveltejs/kit').Config} */
+
+
+
+
 module.exports = {
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
@@ -22,6 +26,10 @@ module.exports = {
       ssr: {
         external: Object.keys(pkg.dependencies || {}),
       },
+      optimizeDeps: {
+        include: ['mongodb']
+      }
     },
+
   },
 };
