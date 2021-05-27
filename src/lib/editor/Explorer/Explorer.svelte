@@ -10,11 +10,13 @@
         root = root.selectFile(evt.detail.selected); 
         dispatch('SelectFile',{selected: evt.detail.selected})
     }
-
-    
 </script>
+<div class="h-full scrollbar-track-transparent scrollbar-thumb-indigo-400 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-thin">
+    <div class="">
+        <ul>
+            <Folder on:SelectFile={handle_select_file} bind:folder={root.folders}/>
+        </ul>
+    </div> 
+</div>
 
-<ul>
-    <Folder on:SelectFile={handle_select_file} bind:folder={root.folders}/>
-</ul>
 
