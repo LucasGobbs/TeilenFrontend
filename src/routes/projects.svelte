@@ -2,7 +2,9 @@
     import TiFolder from 'svelte-icons/ti/TiFolder.svelte'
     import Avatar from "$lib/Avatar.svelte";
     import Explorer from "$lib/editor/Explorer/Explorer.svelte"
-
+    import LeftBar from '$lib/projects/LeftBar/LeftBar.svelte'
+    import Dashboard from '$lib/projects/dashboard.svelte'
+    
     let left_bar = "config"
     let projects = [{
         name: "Programação Orientada a Objetos",
@@ -98,99 +100,67 @@
     const {Chart} = pkg
     import { onMount } from 'svelte';
     onMount(async()=>{
-        renderChart()
+        // renderChart()
         //console.log(projects.length)
         //console.log(projects_3)
     })
     function renderChart() {
         const canvas = <HTMLCanvasElement> document.getElementById("myChart")
-        var ctx = canvas.getContext("2d");
-        var chart = new Chart(ctx, {
-            type: "doughnut",
-            data: {
-                labels: ["ts", "js", "css", "html", "json"],
-                datasets: [
-                {
-                    data: [300, 50, 100, 40, 120],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                    hoverBackgroundColor: [
-                    "#FF5A5E",
-                    "#5AD3D1",
-                    "#FFC870",
-                    "#A8B3C5",
-                    "#616774",
+            console.log(canvas)
+        if(canvas){
+            console.log("AAA")
+            var ctx = canvas.getContext("2d");
+            var chart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    labels: ["ts", "js", "css", "html", "json"],
+                    datasets: [
+                    {
+                        data: [300, 50, 100, 40, 120],
+                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                        hoverBackgroundColor: [
+                        "#FF5A5E",
+                        "#5AD3D1",
+                        "#FFC870",
+                        "#A8B3C5",
+                        "#616774",
+                        ]
+                    }
                     ]
-                }
-                ]
-            },
-            options: {}
-        });
+                },
+                options: {}
+            });
+        }
+        
     }
-
+    const onClickInUnselected = (event) => {
+        left_bar = event.detail.name; 
+        if(left_bar == "dashboard"){renderChart()}
+    }
+    let project_explorer = new Root(default_folder)
     import MdSearch from 'svelte-icons/md/MdSearch.svelte'
+    import MdSettings from 'svelte-icons/md/MdSettings.svelte'
+import { default_folder, Root } from '$lib/editor/Explorer/Explorer';
 </script>
 <div class = "mx-auto h-screen overflow-hidden ">
     
     <div class = "h-screen ">
         <div class = "flex flex-row flex-grow h-full bg-indigo-100">
             <!-- LeftBars -->
-            <nav class="bg-indigo-500 w-16 h-full flex flex-col items-center z-1 justify-between">
-                <!-- Top -->
-                <div class="">
-                    <!-- Logo -->
-                    <div class="mx-auto rounded-full bg-white w-10 h-10 mt-3"></div>
-                    <!-- Icons -->
-                    <div class="mt-8 w-16 text-white "> 
-                        <div class="py-4 hover:bg-indigo-600 hover:border-opacity-100 border-opacity-0 border-white border-l-4 rounded h-16">
-                            <div class="w-6 h-6 m-auto">
-                                <TiFolder />
-                            </div>
-                        </div>
-                        <div class="py-4 hover:bg-indigo-600 hover:border-opacity-100 border-opacity-0 border-white border-l-4 rounded h-16">
-                            <div class="w-6 h-6 m-auto">
-                                <TiFolder />
-                            </div>
-                        </div>
-                        <div class="py-4 hover:bg-indigo-600 hover:border-opacity-100 border-opacity-0 border-white border-l-4 rounded h-16">
-                            <div class="w-6 h-6 m-auto">
-                                <TiFolder />
-                            </div>
-                        </div>
-                        <div class="py-4 hover:bg-indigo-600 hover:border-opacity-100 border-opacity-0 border-white border-l-4 rounded h-16">
-                            <div class="w-6 h-6 m-auto">
-                                <TiFolder />
-                            </div>
-                        </div>
-                        <div class="py-4 hover:bg-indigo-600 hover:border-opacity-100 border-opacity-0 border-white border-l-4 rounded h-16">
-                            <div class="w-6 h-6 m-auto">
-                                <TiFolder />
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                
-                <!-- Avatar -->
-                <a href="#" class ="mt-8">
-                    <img
-                     
-                      src="https://randomuser.me/api/portraits/women/76.jpg"
-                      class="rounded-full w-10 h-10 mb-3 mx-auto"
-                    />
-                </a>
-            </nav>
+            <LeftBar on:clickun={onClickInUnselected} />
             <!-- 2 LeftBar -->
             <div class="bg-white w-72 h-full flex flex-col items-left z-1 justify-between">
-                <div class="ml-4 divide-y divide-indigo-300">
+                <div class="ml-4 divide-y divide-indigo-300 w-11/12">
                     <h1 class="text-black-500 tracking-widest text-sm pt-2 mb-3 font-bold ">Programação Orientada a Objetos</h1>
                     {#if left_bar == "explorer"}
                         <h2 class = "title-font font-medium text-black-500 tracking-widest text-2xl mb-5 pt-8 ">Explorer</h2>
                         <!-- <Explorer bind:root={project_explorer} on:SelectFile={handle_select_file} /> -->
+                        <Explorer bind:root={project_explorer} />
                     {:else if  left_bar == "config"}
                         <h1 class = "title-font font-medium text-black-500 tracking-widest text-2xl mb-3 pt-8 ">Config</h1>
-                    {:else}
-                         <!-- else content here -->
+                    {:else if left_bar == "dashboard"}
+                        <h1 class = "title-font font-medium text-black-500 tracking-widest text-2xl mb-3 pt-8 ">Storage</h1>
+                        <Dashboard />
                     {/if}
                     
                 </div>
@@ -248,29 +218,7 @@
                     {/each}
                 </div>
             </div>
-            <!-- RightBar -->
-            <div class="bg-white w-56 h-full flex flex-col items-start  z-1 justify-between">
-                <h2 class="text-black-500 tracking-widest text-sm pt-2 mb-3 font-bold pl-2 ">Status: 
-                    {#if project_status == "ligado"}
-                        <span class="bg- text-green-400">{project_status}</span> 
-                    {:else}
-                        <span class="bg- text-red-400">{project_status}</span> 
-                    {/if}
-                    
-                </h2>
-              
-                <div class="flex flex-col w-full p-2 items-center">
-                    <h3 class="text-black-500 tracking-widest text-sm pt-2 mb-3 font-bold ">Espaço</h3>
-                    
-                    <div class="flex border  w-full items-start">
-                        
-                        <h4>Espaço: 10/100 mb</h4>
-                    </div>
-                    <canvas id="myChart"></canvas>
-                </div>
-                        
-               
-            </div>
+            
         </div>
     </div>
 </div>

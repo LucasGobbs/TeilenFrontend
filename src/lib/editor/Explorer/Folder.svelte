@@ -50,7 +50,7 @@
 </div>
 {#if folder.expanded}	
     {#each folder.children as child}
-        <div  transition:slide class="pl-2 border-l border-black border-opacity-25">
+        <div  in:slide class="pl-2 border-l border-black border-opacity-25">
             {#if child.isFolder()}
                 <svelte:self on:SelectFile={(evt)=>{select_file(evt.detail.selected)}} bind:folder={child} />
             {:else}
