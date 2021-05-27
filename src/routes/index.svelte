@@ -30,8 +30,8 @@ import { goto } from "$app/navigation";
 			</div>
 			<div class="container h-screen hidden md:block">
 				<div>
-				  <img class="w-full" href="https://storyset.com/education" src="../../static/images/svg/Telecommuting-cuate.svg" alt="Kiwi standing on oval">
-				  <a href="https://storyset.com/work">Illustration by Freepik Storyset</a>
+				  <img class="w-full" href="https://storyset.com/education" src="../../images/svg/Telecommuting-cuate.svg" alt="Kiwi standing on oval">
+				  <!-- <a href="https://storyset.com/work">Illustration by Freepik Storyset</a> -->
 				</div>
 			</div>
 		</div>

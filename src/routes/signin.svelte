@@ -32,8 +32,8 @@
   <div class="flex">
     <div class="container h-screen hidden md:block">
       <div class = "pl-10">
-        <img class="w-full" href="https://storyset.com/education" src="../../static/images/svg/Mobile login-pana.svg" alt="Kiwi standing on oval">
-        <a href="https://storyset.com/mobile">Illustration by Freepik Storyset</a>
+        <img class="w-full" href="https://storyset.com/education" src="../../images/svg/Mobile login-pana.svg" alt="Kiwi standing on oval">
+        <!-- <a href="https://storyset.com/mobile">Illustration by Freepik Storyset</a> -->
       </div>
     </div>
     <!-- Login Form -->

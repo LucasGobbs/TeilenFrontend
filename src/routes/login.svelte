@@ -86,8 +86,8 @@
     </div>
     <div class="container h-screen hidden md:block">
       <div>
-        <img class="w-full" href="https://storyset.com/education" src="../../static/images/svg/Teaching-rafiki.svg" alt="Kiwi standing on oval">
-        <a href="https://storyset.com/education">Illustration by Freepik Storyset</a>
+        <img class="w-full" href="https://storyset.com/education" src="../../images/svg/Teaching-rafiki.svg" alt="Kiwi standing on oval">
+        <!-- <a href="https://storyset.com/education">Illustration by Freepik Storyset</a> -->
       </div>
     </div>
   </div>
